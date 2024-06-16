@@ -1,7 +1,7 @@
-
-div{
-   color: antiquewhite;
+div {
+    color: antiquewhite;
 }
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -11,37 +11,43 @@ body {
     height: 40vh;
     background-color: black;
 }
+
 #timer {
     font-size: 3em;
     margin-bottom: 20px;
 }
+
 button {
     font-size: 1em;
     padding: 10px 20px;
     margin: 5px;
     color: antiquewhite;
     margin: 0%;
-    
+
 }
-button:hover.start{
+
+button:hover.start {
     background-color: rgb(66, 137, 66);
 }
-button:hover.reset{
-    background-color:rgb(249, 98, 98);
+
+button:hover.reset {
+    background-color: rgb(249, 98, 98);
 }
-button:hover.pause{
+
+button:hover.pause {
     background-color: rgb(173, 171, 171);
 }
 
-.start{
+.start {
     background-color: green;
-    
+
 }
 
-.pause{
-    background-color: grey;
+.pause {
+    display: none;
+    background-color: rgb(72, 72, 72);
 }
 
-.reset{
+.reset {
     background-color: brown;
 }

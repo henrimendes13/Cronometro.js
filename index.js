@@ -1,49 +1,75 @@
-var seg=00
-var min=00
-var hora=00
+var cent = 0
+var seg = 0
+var min = 0
+var hora = 0
 var interval
+var isRunning = false
 
-function doisDigitos(digito){
-    if (digito<10){
-        return('0'+digito)
-    } 
-        else{
-            return(digito)
-        }
+
+function doisDigitos(digito) {
+    if (digito < 10) {
+        return ('0' + digito)
     }
-
-
-
-function iniciar(){
-       interval = setInterval(contador, 1000)
-       document.getElementById('start').disabled=true
-   
+    else {
+        return (digito)
+    }
 }
 
-function pausar(){
+function trocarBotao() {
+    if (!isRunning) {
+        iniciar()
+    }
+    else {
+        pausar()
+    }
+
+}
+
+function iniciar() {
+    interval = setInterval(contador, 16, 66666666666667)
+    document.getElementById('start').style.display = 'none'
+    document.getElementById('pause').style.display = 'inline'
+    isRunning = true
+
+}
+
+function pausar() {
     clearInterval(interval)
-    document.getElementById('start').disabled=false
+    document.getElementById('start').style.display = 'inline'
+    document.getElementById('pause').style.display = 'none'
+    isRunning = false
 }
 
-function zerar(){
-    seg=00
-    min=00
-    hora=00
-    document.getElementById('timer').innerText='00:00:00'
-    document.getElementById('start').disabled=false
+function zerar() {
+    clearInterval(interval)
+    isRunning = false
+    document.getElementById('start').style.display = 'inline'
+    document.getElementById('pause').style.display = 'none'
+    cent = 0
+    seg = 0
+    min = 0
+    hora = 0
+    document.getElementById('timer').innerText = '00:00:00:00'
+
+
 }
 
-function contador(){
-    seg++
-    if (seg==60){
-        min++
-        seg=0
+function contador() {
+    cent++
+    if (cent == 60) {
+        seg++
+        cent = 0
 
-        if (min==60){
-            hora++
-            min=0
+        if (seg == 60) {
+            min++
+            seg = 0
+
+            if (min == 60) {
+                hora++
+                min = 0
+            }
         }
     }
 
-    document.getElementById('timer').innerText=doisDigitos(hora)+':'+doisDigitos(min)+':'+doisDigitos(seg)
+    document.getElementById('timer').innerText = doisDigitos(hora) + ':' + doisDigitos(min) + ':' + doisDigitos(seg) + ':' + doisDigitos(cent)
 }
